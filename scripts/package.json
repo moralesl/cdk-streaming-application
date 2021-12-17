@@ -1,0 +1,8 @@
+{
+  "name": "scripts",
+  "version": "1.0.0",
+  "devDependencies": {
+    "aws-sdk": "^2.1046.0",
+    "faker": "^5.5.3"
+  }
+}

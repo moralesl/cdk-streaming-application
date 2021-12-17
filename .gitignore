@@ -1,3 +1,4 @@
+!scripts/*.js
 *.js
 !jest.config.js
 *.d.ts
