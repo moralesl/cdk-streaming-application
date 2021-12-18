@@ -118,21 +118,5 @@ export class CdkStreamingApplicationStack extends Stack {
     cfnEnrichedOrdersPersistFirehose.node.addDependency(enrichedOrdersBucket);
     cfnEnrichedOrdersPersistFirehose.node.addDependency(firehoseRole);
     cfnEnrichedOrdersPersistFirehose.node.addDependency(enrichedOrderStream);
-
-    const groceryOrderStreamPushUser = new iam.User(this, "GroceryOrderStreamPushUser", {
-      userName: "GroceryOrderStreamPushUser",
-    });
-    groceryOrderStream.grantWrite(groceryOrderStreamPushUser);
-
-    var groceryOrderStreamPushUserAccessKey = new iam.CfnAccessKey(this, "DeveloperS3AccessKey", {
-      userName: groceryOrderStreamPushUser.userName,
-    });
-
-    new CfnOutput(this, "groceryOrderStreamPushUserAccessKey", {
-      value: groceryOrderStreamPushUserAccessKey.ref,
-    });
-    new CfnOutput(this, "groceryOrderStreamPushUserSecretAccessKey", {
-      value: groceryOrderStreamPushUserAccessKey.getAtt("SecretAccessKey").toString(),
-    });
   }
 }
