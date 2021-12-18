@@ -45,7 +45,10 @@ export class CdkStreamingApplicationStack extends Stack {
     enrichOrderProcessor.addEventSource(
       new KinesisEventSource(groceryOrderStream, {
         batchSize: 100, // default
-        startingPosition: lambda.StartingPosition.LATEST,
+        startingPosition: lambda.StartingPosition.TRIM_HORIZON,
+        parallelizationFactor: 10,
+        bisectBatchOnError: true,
+        retryAttempts: 3
       })
     );
 

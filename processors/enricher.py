@@ -24,12 +24,12 @@ def lambda_handler(event, context):
     # If there was some failure, go ahead and print out the details
     if response['FailedRecordCount'] > 0:
         print('FailedRecordCount = %d' % response['FailedRecordCount'])
-        print('Received event: ' + json.dumps(event, indent=2))
-        print('Records: ' + json.dumps(enriched_orders_list, indent=2))
+        print(*event['Records'], sep = ", ")
+        print(*enriched_orders_list, sep = ", ")
         raise Exception('FailedRecordCount = %d' % response['FailedRecordCount'])
     else:
         print('Successfully put %d record(s) onto output stream.' % len(enriched_orders_list))
-        print(*enriched_orders_list, sep = ", ")    
+        print(*enriched_orders_list, sep = ", ")
 
 
 def enrich_incoming_orders(records):
