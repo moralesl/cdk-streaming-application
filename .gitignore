@@ -1,5 +1,5 @@
-!scripts/*.js
 *.js
+!scripts/*.js
 !jest.config.js
 *.d.ts
 node_modules
