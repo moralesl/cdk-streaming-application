@@ -1,5 +1,5 @@
 import * as path from "path";
-import { CfnOutput, Duration, RemovalPolicy, Stack, StackProps } from "aws-cdk-lib";
+import { Duration, RemovalPolicy, Stack, StackProps } from "aws-cdk-lib";
 import { Construct } from "constructs";
 import * as kinesis from "aws-cdk-lib/aws-kinesis";
 import * as dynamodb from "aws-cdk-lib/aws-dynamodb";
