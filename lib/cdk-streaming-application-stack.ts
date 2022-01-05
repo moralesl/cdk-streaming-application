@@ -7,7 +7,6 @@ import * as lambda from "aws-cdk-lib/aws-lambda";
 import * as iam from "aws-cdk-lib/aws-iam";
 import * as s3 from "aws-cdk-lib/aws-s3";
 import { KinesisEventSource } from "aws-cdk-lib/aws-lambda-event-sources";
-import * as kinesisanalytics from "aws-cdk-lib/aws-kinesisanalytics";
 import * as kinesisfirehose from 'aws-cdk-lib/aws-kinesisfirehose';
 
 export class CdkStreamingApplicationStack extends Stack {
@@ -17,11 +16,13 @@ export class CdkStreamingApplicationStack extends Stack {
     var groceryOrderStream = new kinesis.Stream(this, "GroceryOrderStream", {
       streamName: "GroceryOrderStream",
       shardCount: 1,
+      // TODO Stream mode details = 'ON_DEMAND' (https://docs.aws.amazon.com/de_de/AWSCloudFormation/latest/UserGuide/aws-properties-kinesis-stream-streammodedetails.html)
     });
 
     var enrichedOrderStream = new kinesis.Stream(this, "EnrichedOrderStream", {
       streamName: "EnrichedOrderStream",
       shardCount: 1,
+      // TODO Stream mode details = 'ON_DEMAND' (https://docs.aws.amazon.com/de_de/AWSCloudFormation/latest/UserGuide/aws-properties-kinesis-stream-streammodedetails.html)
     });
 
     var userInfoTable = new dynamodb.Table(this, "UserInfoTable", {
