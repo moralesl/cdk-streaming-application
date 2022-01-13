@@ -16,13 +16,13 @@ export class CdkStreamingApplicationStack extends Stack {
     var groceryOrderStream = new kinesis.Stream(this, "GroceryOrderStream", {
       streamName: "GroceryOrderStream",
       shardCount: 1,
-      // TODO Stream mode details = 'ON_DEMAND' (https://docs.aws.amazon.com/de_de/AWSCloudFormation/latest/UserGuide/aws-properties-kinesis-stream-streammodedetails.html)
+      streamMode: kinesis.StreamMode.ON_DEMAND,
     });
 
     var enrichedOrderStream = new kinesis.Stream(this, "EnrichedOrderStream", {
       streamName: "EnrichedOrderStream",
       shardCount: 1,
-      // TODO Stream mode details = 'ON_DEMAND' (https://docs.aws.amazon.com/de_de/AWSCloudFormation/latest/UserGuide/aws-properties-kinesis-stream-streammodedetails.html)
+      streamMode: kinesis.StreamMode.ON_DEMAND,
     });
 
     var userInfoTable = new dynamodb.Table(this, "UserInfoTable", {
